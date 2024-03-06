@@ -8,13 +8,20 @@ public class DangerWheelAnimation : MonoBehaviour
     void Start()
     {
         LeanTween.moveY(gameObject, transform.position.y - 10, 2f);
-        LeanTween.moveX(gameObject, transform.position.x - 10, 2f);
-        LeanTween.moveX(gameObject, transform.position.x - 10, 2f).setDelay(2.1f);
+        LeanTween.moveX(gameObject, transform.position.x - 10, 2f).setOnComplete(MoveX);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void MoveX() {
+        LeanTween.moveX(gameObject, transform.position.x - 10, 2f).setOnComplete(Destroy);
+    }
+
+    void Destroy() {
+        Destroy(gameObject);
     }
 }
