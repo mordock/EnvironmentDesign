@@ -24,11 +24,4 @@ public class DangerWheelAnimation : MonoBehaviour
     void Destroy() {
         Destroy(gameObject);
     }
-
-    private void OnTriggerEnter(Collider collision) {
-        if (collision.gameObject.tag.Equals("Player")) {
-            GameObject manager = GameObject.Find("GameManager");
-            manager.GetComponent<CheckPointManager>().LoadLatestCheckpoint(collision.gameObject);
-        }
-    }
 }

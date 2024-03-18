@@ -34,7 +34,7 @@ public class HighSpeedPostProcessing : MonoBehaviour
     public Material material;
 
     Camera Cam;
-     SceneView SceneView;
+     //SceneView SceneView;
      Camera SceneCamera;
 
     private void Start()
@@ -64,8 +64,9 @@ public class HighSpeedPostProcessing : MonoBehaviour
 
     private Camera GetCamera()
     {
-        SceneView = EditorWindow.GetWindow<SceneView>();
-        return SceneView.camera;
+        //SceneView = EditorWindow.GetWindow<SceneView>();
+        //return SceneView.camera;
+        return null;
     }
 
     void Set()
