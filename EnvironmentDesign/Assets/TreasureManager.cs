@@ -8,6 +8,7 @@ public class TreasureManager : MonoBehaviour
     public GameObject treasure;
     public List<GameObject> movePoints;
     public float moveSpeed;
+    public GameObject treasureCamera;
     private bool moving;
 
     // Start is called before the first frame update
@@ -27,10 +28,6 @@ public class TreasureManager : MonoBehaviour
             } else if (currentTreasureProgress.Equals(4)) {
                 treasure.transform.position = Vector3.MoveTowards(treasure.transform.position, new Vector3(treasure.transform.position.x, movePoints[3].transform.position.y, treasure.transform.position.z), moveSpeed * Time.deltaTime);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.F)) {
-            ProgressTreasure();
         }
     }
 
