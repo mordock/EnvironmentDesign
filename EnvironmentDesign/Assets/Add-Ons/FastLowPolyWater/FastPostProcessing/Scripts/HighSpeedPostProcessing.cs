@@ -159,7 +159,7 @@ public class HighSpeedPostProcessing : MonoBehaviour
         var cType = this.GetType();
 
         var existing = cameraGo.GetComponent(cType) ?? cameraGo.AddComponent(cType);
-        EditorUtility.CopySerialized(this, existing);
+        //EditorUtility.CopySerialized(this, existing);
 
 
     }

@@ -11,15 +11,13 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G)) {
-            Shake();
-        }
+
     }
 
     public void Die() {
@@ -31,12 +29,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     IEnumerator Wait(float waitTime) {
+        GameObject gameManager = GameObject.Find("GameManager");
+
         yield return new WaitForSeconds(waitTime);
         playerCamera.GetComponent<CinemachineBrain>().enabled = false;
         playerCamera.GetComponent<SmoothShake>().StartShake();
+        gameManager.GetComponent<AudioManager>().PlayShakeSound();
         yield return new WaitForSeconds(0.5f);
         playerCamera.GetComponent<CinemachineBrain>().enabled = true;
-        GameObject gameManager = GameObject.Find("GameManager");
 
         gameManager.GetComponent<TreasureManager>().treasureCamera.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.25f);
