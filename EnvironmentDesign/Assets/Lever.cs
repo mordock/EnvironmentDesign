@@ -58,6 +58,8 @@ public class Lever : MonoBehaviour
                 if (isLeftPuzzle) {
                     gameManager.GetComponent<LeftPuzzleCollapse>().Collapse();
                 }
+
+                gameManager.GetComponent<TutorialManager>().TriggerEObject(false);
             }
         }
     }
@@ -65,12 +67,18 @@ public class Lever : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.Equals("Player")) {
             playerClose = true;
+            GameObject gameManager = GameObject.Find("GameManager");
+            gameManager.GetComponent<TutorialManager>().TriggerEObject(true);
+
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag.Equals("Player")) {
             playerClose = false;
+            GameObject gameManager = GameObject.Find("GameManager");
+            gameManager.GetComponent<TutorialManager>().TriggerEObject(false);
+
         }
     }
 }
