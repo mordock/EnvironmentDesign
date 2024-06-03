@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("BlockoutV4Final");
+        SceneManager.LoadScene("S_Playing");
     }
         
 }
