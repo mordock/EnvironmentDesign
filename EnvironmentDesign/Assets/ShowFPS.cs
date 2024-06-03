@@ -5,14 +5,28 @@ using TMPro;
 
 public class ShowFPS : MonoBehaviour
 {
-    public TextMeshProUGUI fpsText;
-    public float deltaTime;
+    const float fpsMeasurePeriod = 0.5f;
+    private int m_FpsAccumulator = 0;
+    private float m_FpsNextPeriod = 0;
+    private int m_CurrentFps;
+    const string display = "{0} FPS";
 
-    // Update is called once per frame
-    void Update()
-    {
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float fps = 1.0f / deltaTime;
-        fpsText.text = Mathf.Ceil(fps).ToString();
+
+    void Start() {
+        m_FpsNextPeriod = Time.realtimeSinceStartup + fpsMeasurePeriod;
+    }
+
+    void Update() {
+        // measure average frames per second
+        m_FpsAccumulator++;
+        if (Time.realtimeSinceStartup > m_FpsNextPeriod) {
+            m_CurrentFps = (int)(m_FpsAccumulator / fpsMeasurePeriod);
+            m_FpsAccumulator = 0;
+            m_FpsNextPeriod += fpsMeasurePeriod;
+        }
+    }
+
+    void OnGUI() {
+        GUILayout.Label(string.Format(display, m_CurrentFps));
     }
 }
