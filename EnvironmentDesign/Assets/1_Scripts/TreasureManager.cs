@@ -33,7 +33,7 @@ public class TreasureManager : MonoBehaviour
         if (currentTreasureProgress.Equals(4)) {
             if (treasure.GetComponent<Treasure>().playerIsClose) {
                 if (Input.GetKeyDown(KeyCode.E)){
-                    SceneManager.LoadScene("MainMenuScene");
+                    SceneManager.LoadScene("S_MainMenu");
                 }
             }
         }
